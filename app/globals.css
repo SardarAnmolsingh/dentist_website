@@ -1,0 +1,56 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+@layer base{html{scroll-behavior:smooth}body{@apply overflow-x-clip bg-slate-50 font-sans text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100}}
+@layer components{
+.sec{@apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8}
+.card{@apply rounded-3xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900}
+.btn{@apply inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl px-7 text-base font-bold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 active:scale-95}
+.btn-p{@apply btn bg-gradient-to-r from-blue-600 to-teal-600 text-white shadow-lg shadow-blue-500/20 hover:opacity-95}
+.btn-o{@apply btn border border-slate-300 bg-white text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700}
+.eyebrow{@apply text-xs font-bold uppercase tracking-widest text-teal-600 dark:text-teal-400}
+.icon{@apply inline-block w-max rounded-2xl bg-blue-50 p-3.5 text-blue-600 dark:bg-slate-800 dark:text-teal-400}
+.input{@apply min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 p-3.5 text-base outline-none focus:ring-2 focus:ring-blue-500 dark:border-slate-800 dark:bg-slate-950 dark:text-white}
+.lbl{@apply mb-1 block text-xs font-bold uppercase text-slate-500}}
+.rise{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}}
+@media (prefers-reduced-motion:reduce){.rise{animation:none}html{scroll-behavior:auto}}
+
+/* ---- motion ---- */
+.stg>*{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.stg>*:nth-child(2){animation-delay:.12s}.stg>*:nth-child(3){animation-delay:.24s}.stg>*:nth-child(4){animation-delay:.36s}.stg>*:nth-child(5){animation-delay:.48s}
+.rise-d{animation:rise .9s .3s cubic-bezier(.2,.7,.2,1) both}
+.float-y{animation:floaty 7s ease-in-out infinite}@keyframes floaty{50%{transform:translateY(-10px)}}
+.blob{animation:drift 14s ease-in-out infinite alternate}@keyframes drift{to{transform:translate(40px,30px) scale(1.15)}}
+.grad-anim{background-size:200% auto;animation:shift 6s ease-in-out infinite alternate}@keyframes shift{to{background-position:100% 0}}
+.drop{animation:drop .6s ease backwards}@keyframes drop{from{transform:translateY(-100%)}}
+.pic{position:relative;overflow:hidden}
+.pic img{animation:kb 16s ease-in-out infinite alternate;transition:scale .6s}
+.pic:hover img{scale:1.07}
+.pic::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.22) 50%,transparent 60%);transform:translateX(-120%);animation:sheen 8s ease-in-out infinite}
+@keyframes kb{to{transform:scale(1.06)}}@keyframes sheen{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.rv:not(.in){opacity:0}
+.rv.in{animation:rise .7s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:var(--d,0s)}
+.lift{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}.lift:hover{transform:translateY(-6px)}
+.pop{animation:pop .5s cubic-bezier(.2,.7,.2,1) backwards}@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.96)}}
+.fade-in{animation:fade .3s ease both}@keyframes fade{from{opacity:0}}
+.sheet{animation:sheet .45s cubic-bezier(.2,.8,.2,1) both}@keyframes sheet{from{opacity:0;transform:translateY(40px) scale(.98)}}
+.slide-down{animation:sdown .35s ease both;transform-origin:top}@keyframes sdown{from{opacity:0;transform:translateY(-12px)}}
+details[open]>p{animation:sdown .35s ease both}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.marquee-track{display:flex;width:max-content;animation:marq 50s linear infinite}
+.marquee:hover .marquee-track,.marquee:focus-within .marquee-track{animation-play-state:paused}
+.marquee-group{display:flex;gap:1rem;padding-right:1rem}
+@keyframes marq{to{transform:translateX(-33.3333%)}}
+.fab{position:relative;animation:ring 2.6s ease-out infinite}
+.fab-b{--ring:37 99 235}.fab-g{--ring:16 185 129}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgb(var(--ring)/.55)}70%,100%{box-shadow:0 0 0 16px rgb(var(--ring)/0)}}
+.wig{animation:wig 5s ease-in-out infinite}
+@keyframes wig{0%,84%,100%{transform:rotate(0)}86%{transform:rotate(-14deg)}88%{transform:rotate(14deg)}90%{transform:rotate(-10deg)}92%{transform:rotate(10deg)}94%{transform:rotate(-5deg)}}
+.bob{animation:bob 3s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-3px) scale(1.06)}}
+.check{animation:check .6s cubic-bezier(.3,1.6,.5,1) both}@keyframes check{from{scale:0}}
+.input{transition:box-shadow .25s,border-color .25s,transform .25s}.input:focus{transform:translateY(-1px);box-shadow:0 8px 24px -10px rgb(37 99 235/.45)}
+.btn:hover{translate:0 -2px}
+.btn-p{position:relative;overflow:hidden}
+.btn-p::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-120%);transition:transform .7s}
+.btn-p:hover::after{transform:translateX(120%)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+.marquee{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.marquee-track{animation:none!important}.dup{display:none}.rv:not(.in){opacity:1}}

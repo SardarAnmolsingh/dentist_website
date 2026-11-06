@@ -1,0 +1,3 @@
+import {services} from '../../lib/site';import {Head} from '../../components/ui';import ServicesClient from '../../components/ServicesClient';import {CTA} from '../../components/Blocks';
+export const metadata={title:'Dental Treatments in Delhi',description:'Braces, clear aligners, root canal, implants, whitening, veneers, cleaning and kids dentistry in Delhi.'};
+export default function P(){return <><div className="sec py-12 md:py-16"><Head as="h1" eyebrow="Complete care portfolio" title="Our dental services and treatments" sub="From preventive cleanings to clear aligners and implants. Pricing is shared on request after a consultation."/><ServicesClient services={services}/></div><CTA/></>}

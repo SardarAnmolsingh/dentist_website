@@ -1,0 +1,3 @@
+import {posts} from '../../lib/site';import {Head} from '../../components/ui';
+export const metadata={title:'Dental Tips',description:'Simple, practical dental care tips from our Delhi clinic.'};
+export default function P(){return <div className="sec py-12 md:py-16"><Head as="h1" eyebrow="Healthy habits" title="Dental tips" sub="Short, practical advice from our team."/><div className="grid gap-6 md:grid-cols-3">{posts.map(([t,d])=><article key={t} className="card lift p-6 hover:shadow-xl"><h2 className="text-xl font-bold">{t}</h2><p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{d}</p></article>)}</div></div>}

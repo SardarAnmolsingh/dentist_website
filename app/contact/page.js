@@ -1,0 +1,11 @@
+import {MapPin,Phone,Clock,MessageCircle} from 'lucide-react';import {site,wa} from '../../lib/site';import {Head} from '../../components/ui';import BookingForm from '../../components/BookingForm';
+export const metadata={title:'Contact and Location',description:'Find our dental clinic in Delhi, see opening hours, call, WhatsApp or book an appointment.'};
+const Row=({i:I,t,children})=><div className="flex items-start gap-4"><span className="icon shrink-0 !p-3"><I size={22}/></span><div><h3 className="text-sm font-bold">{t}</h3><div className="mt-1 text-xs leading-relaxed text-slate-600 dark:text-slate-400">{children}</div></div></div>;
+export default function P(){return <div className="sec py-12 md:py-16"><Head as="h1" eyebrow="Get in touch" title="Visit Malhotra Dental Clinic" sub="Conveniently located near Civil Lines Metro Station, North Delhi."/>
+<div className="grid gap-8 lg:grid-cols-12"><div className="flex flex-col gap-6 lg:col-span-5"><div className="card space-y-6 p-6 sm:p-8"><h2 className="border-b border-slate-200 pb-3 text-xl font-bold dark:border-slate-800">Clinic information</h2>
+<Row i={MapPin} t="Address"><p>{site.address}</p><a className="mt-1 inline-block font-semibold text-blue-600 underline dark:text-teal-400" href={site.mapLink} target="_blank" rel="noopener noreferrer">Open in Google Maps</a></Row>
+<Row i={Phone} t="Phone and WhatsApp"><a className="font-semibold" href={`tel:${site.phone}`}>{site.phoneText}</a><p className="mt-0.5 font-bold text-emerald-600">Emergency line: call any time (sample)</p></Row>
+<Row i={Clock} t="Opening hours"><ul className="space-y-1">{site.hours.map(([a,b])=><li key={a}><strong>{a}:</strong> {b}</li>)}</ul></Row>
+<div className="flex flex-col gap-3 sm:flex-row"><a className="btn-p flex-1" href={`tel:${site.phone}`}><Phone size={18}/>Call now</a><a className="btn-o flex-1" href={wa('Hi, I would like to book an appointment.')}><MessageCircle size={18}/>WhatsApp</a></div></div>
+<iframe title="Clinic location map" src={site.map} loading="lazy" className="h-64 w-full rounded-3xl border-0 shadow-md"/></div>
+<div className="lg:col-span-7"><div className="card p-6 shadow-xl sm:p-10"><h2 className="mb-2 text-2xl font-bold">Book your visit</h2><p className="mb-6 text-xs text-slate-500">Share your details and we will confirm on WhatsApp.</p><BookingForm/></div></div></div></div>}
