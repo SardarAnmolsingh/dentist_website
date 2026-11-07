@@ -1,5 +1,8 @@
 'use client';
-import {useState} from 'react';import {CheckCircle2,X,MessageCircle} from 'lucide-react';import {img,wa} from '../lib/site';import {Icon} from './ui';
+import { CheckCircle2, MessageCircle, X } from 'lucide-react';
+import { useState } from 'react';
+import { img, wa } from '../lib/site';
+import { Icon } from './ui';
 export default function ServicesClient({services}){const cats=['All',...new Set(services.map(s=>s.category))];const [f,setF]=useState('All');const [sel,setSel]=useState(null);
 const list=f==='All'?services:services.filter(s=>s.category===f);
 return <><div className="mb-10 flex flex-wrap justify-center gap-2">{cats.map(c=><button key={c} aria-pressed={f===c} onClick={()=>setF(c)} className={`min-h-11 rounded-full px-4 text-xs font-bold transition ${f===c?'bg-blue-600 text-white shadow-md':'border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300'}`}>{c}</button>)}</div>

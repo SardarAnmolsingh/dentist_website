@@ -1,15 +1,38 @@
-import './globals.css';import Link from 'next/link';import Script from 'next/script';import {Manrope} from 'next/font/google';import {Stethoscope,Phone,MessageCircle,MapPin,Mail,ChevronRight} from 'lucide-react';import {site,nav,services,wa} from '../lib/site';import Header from '../components/Header';import Reveal from '../components/Reveal';
+import './globals.css';
+import Link from 'next/link';
+import Script from 'next/script';
+import {Manrope} from 'next/font/google';
+import {Stethoscope,Phone,MessageCircle,MapPin,Mail,ChevronRight} from 'lucide-react';
+import {site,nav,services,wa} from '../lib/site';
+import Header from '../components/Header';
+import Reveal from '../components/Reveal';
+
+
 const sans=Manrope({subsets:['latin'],variable:'--font-sans',display:'swap'});
+
 const d='Gentle, modern dental care in Delhi: braces, clear aligners, root canal, implants, whitening and kids dentistry. 10,000+ patients. Book on WhatsApp.';
+
 export const metadata={metadataBase:new URL(site.url),title:{default:`${site.name} | Dentist and Orthodontist in Delhi`,template:`%s | ${site.name}`},description:d,keywords:['dentist in Delhi','dentist near me','root canal near me','orthodontist north Delhi','braces west Delhi','dental implants Delhi'],openGraph:{title:site.name,description:d,type:'website',locale:'en_IN'}};
+
+
 export const viewport={width:'device-width',initialScale:1};
+
+
 const ld={'@context':'https://schema.org','@type':'Dentist',name:site.name,telephone:site.phone,email:site.email,url:site.url,address:{'@type':'PostalAddress',streetAddress:site.address,addressLocality:'Delhi',addressCountry:'IN'},areaServed:['North Delhi','North West Delhi','West Delhi'],openingHours:['Mo-Sa 09:00-20:30','Su 10:00-14:00']};
+
+
 const fb='fab grid size-14 place-items-center rounded-full border-2 border-white text-white shadow-2xl transition hover:scale-110 dark:border-slate-800';
-export default function Root({children}){const ga=process.env.NEXT_PUBLIC_GA_ID;
-return <html lang="en-IN" suppressHydrationWarning className={sans.variable}><head>
+
+export default function Root({children}){
+    const ga=process.env.NEXT_PUBLIC_GA_ID;
+return <html lang="en-IN" suppressHydrationWarning className={sans.variable}>
+<head>
 <script dangerouslySetInnerHTML={{__html:"try{if(localStorage.t==='d'||(!localStorage.t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}"}}/>
-<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(ld)}}/></head><body>
+<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(ld)}}/>
+</head>
+<body>
 <Header/><main>{children}</main><Reveal/>
+
 <footer className="bg-slate-900 text-slate-300"><div className="sec py-14"><div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
 <div className="flex flex-col gap-4"><span className="flex items-center gap-2 text-xl font-extrabold text-white"><span className="rounded-xl bg-blue-600 p-2"><Stethoscope size={22}/></span>Malhotra <span className="text-teal-400">Dental</span></span><p className="text-sm leading-relaxed text-slate-400">Gentle orthodontics and family dentistry in Delhi, led by {site.doctor} ({site.quals}).</p></div>
 <div><h4 className="mb-4 border-b border-slate-800 pb-2 font-bold text-white">Quick navigation</h4><ul className="space-y-1 text-sm">{nav.map(([h,t])=><li key={h}><Link href={h} className="flex min-h-9 items-center gap-1.5 hover:text-teal-400"><ChevronRight size={14} className="text-blue-500"/>{t}</Link></li>)}</ul></div>

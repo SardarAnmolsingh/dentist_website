@@ -1,7 +1,15 @@
 'use client';
-import {useState} from 'react';import Link from 'next/link';import {usePathname} from 'next/navigation';import {Stethoscope,Menu,X,Sun,Moon,Calendar} from 'lucide-react';import {nav} from '../lib/site';
+import { Calendar, Menu, Moon, Stethoscope, Sun, X } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+import { nav } from '../lib/site';
+
+
 export default function Header(){const p=usePathname();const [o,setO]=useState(false);
 const toggle=<button aria-label="Toggle light or dark theme" onClick={()=>{const d=document.documentElement.classList.toggle('dark');try{localStorage.t=d?'d':'l'}catch(e){}}} className="grid size-11 place-items-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-amber-400 dark:hover:bg-slate-700"><Sun size={18} className="hidden dark:block"/><Moon size={18} className="dark:hidden"/></button>;
+
+
 return <header className="drop sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/90"><div className="sec"><div className="flex h-16 items-center justify-between sm:h-20">
 <Link href="/" className="flex items-center gap-3"><span className="rounded-2xl bg-gradient-to-tr from-blue-700 to-teal-500 p-2.5 text-white shadow-md"><Stethoscope size={24}/></span><span className="flex flex-col"><span className="text-lg font-extrabold leading-none tracking-tight sm:text-xl">Malhotra <span className="text-blue-600 dark:text-teal-400">Dental</span></span><span className="mt-1 hidden text-[11px] font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 sm:block">Dr. Ravi (MDS Orthodontics)</span></span></Link>
 <nav aria-label="Main" className="hidden items-center gap-1 xl:flex">{nav.map(([h,t])=><Link key={h} href={h} aria-current={p===h?'page':undefined} className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${p===h?'border border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-500/30 dark:bg-blue-600/20 dark:text-blue-400':'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white'}`}>{t}</Link>)}</nav>
